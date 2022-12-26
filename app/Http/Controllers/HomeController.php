@@ -17,9 +17,10 @@ class HomeController extends Controller
     }
 
     public function absen(Request $request){
-        $response = Http::post('http://127.0.0.1:8000/api/absen', [
+        $response = Http::post(config('services.url') . '/api/absen', [
             'rfid' => $request->rfid,
         ])->json();
-        dd($response);
+
+        return $response;
     }
 }
